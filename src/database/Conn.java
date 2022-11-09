@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class conn {
-	Connection connection;
-	Statement statement;
-	public conn() {
+public class Conn {
+	public Connection connection;
+	public Statement statement;
+	public Conn() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql:///ebs","root","wegoREAL23@@@");
