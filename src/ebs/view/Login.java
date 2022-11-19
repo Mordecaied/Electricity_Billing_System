@@ -1,4 +1,4 @@
-package login;
+package ebs.view;
 
 import java.awt.BorderLayout;
 import java.awt.Choice;
@@ -16,10 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;	
 import javax.swing.JTextField;
 
-import com.mysql.cj.exceptions.RSAException;
-import com.mysql.cj.protocol.Resultset;
 
-import database.Conn;
+import ebs.database.Conn;
 
 public class Login extends JFrame implements ActionListener {
 
@@ -156,13 +154,13 @@ public class Login extends JFrame implements ActionListener {
 			try {
 				Conn connection = new Conn();
 				String username = userNameField.getText();
-				String password = passwordField.getText();
+				String password = String.valueOf(passwordField.getPassword());
 				String userType = userTypeChoice.getSelectedItem();
 				String query = "select * from login where username = '"+username+"' and password = '"+password+"' and user'"+userType+"'";
 				ResultSet rs = connection.statement.executeQuery(query);
 				if (rs.next()) {
 					String meter = rs.getString("meter_no");
-					//new Project(meter, userType).setVisible(true);
+					//new MainPage(meter, userType).setVisible(true);
 					this.setVisible(false);
 				} else {
 

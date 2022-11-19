@@ -1,4 +1,4 @@
-package login;
+package ebs.view;
 
 import java.awt.Choice;
 import java.awt.Color;
@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import database.Conn;
+import ebs.database.Conn;
 
 public class SignUp extends JFrame implements ActionListener {
 

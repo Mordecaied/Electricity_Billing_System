@@ -1,4 +1,4 @@
-package login;
+package ebs.view;
 
 import java.awt.Color;
 import java.awt.Container;
