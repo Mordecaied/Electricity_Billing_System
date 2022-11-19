@@ -1,4 +1,4 @@
-package test;
+package ebs.testSuite;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
