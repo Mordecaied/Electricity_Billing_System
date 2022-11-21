@@ -62,18 +62,18 @@ public class CustomerDetails extends JFrame implements ActionListener {
 		printButton.addActionListener(this);
 		return printButton;
 }
+	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+	public void actionPerformed(ActionEvent actionEvent) {
+		try {
+			customerTable.print();
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public static void main(String[] args) {
-    new CustomerDetails().setVisible(true);
+		new CustomerDetails().setVisible(true);
 
 	}
-
-
-
-	
-
 }
