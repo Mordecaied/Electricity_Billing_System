@@ -13,7 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class About extends JFrame implements ActionListener{
-	
+
+	private static final long serialVersionUID = 1L;
 	JButton exitButton;
 	JLabel aboutLabel;
 	TextArea aboutTA;
