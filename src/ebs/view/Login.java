@@ -22,13 +22,13 @@ import ebs.database.Conn;
 public class Login extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	JLabel userNameLabel;
-	JLabel passwordLabel;
-	JLabel loggingInAsLabel;
-	JLabel userIconlabel;
+	JLabel userNameL;
+	JLabel passwordL;
+	JLabel loggingInAsL;
+	JLabel userIconL;
 
-	JTextField userNameField;
-	JPasswordField passwordField;
+	JTextField userNameTF;
+	JPasswordField passwordPF;
 	Choice userTypeChoice;
 
 	JButton loginButton;
@@ -63,31 +63,31 @@ public class Login extends JFrame implements ActionListener {
        //User Name
 	void createUserNameField() {
 		//Create userName Label
-		userNameLabel = new JLabel("Username");
-		userNameLabel.setBounds(300, 20, 120, 20);
-		add(userNameLabel);	
+		userNameL = new JLabel("Username");
+		userNameL.setBounds(300, 20, 120, 20);
+		add(userNameL);	
 		//Create UserName Field
-		userNameField = new JTextField(15);
-		userNameField.setBounds(400, 20, 150, 20);
-		add(userNameField);
+		userNameTF = new JTextField(15);
+		userNameTF.setBounds(400, 20, 150, 20);
+		add(userNameTF);
 	}
        //Password
 	void createPasswordField() {
 		//Create password Label
-		passwordLabel = new JLabel("Password");
-		passwordLabel.setBounds(300, 60, 100, 20);
-		add(passwordLabel);
+		passwordL = new JLabel("Password");
+		passwordL.setBounds(300, 60, 100, 20);
+		add(passwordL);
 		//Create Password field
-		passwordField = new JPasswordField(15);
-		passwordField.setBounds(400, 60, 150, 20);
-		add(passwordField);
+		passwordPF = new JPasswordField(15);
+		passwordPF.setBounds(400, 60, 150, 20);
+		add(passwordPF);
 	}
         //Login
 	void createLoginField() {
 		//create Login label
-		loggingInAsLabel = new JLabel("Logging in as");
-		loggingInAsLabel.setBounds(300, 100, 100, 20);
-		add(loggingInAsLabel);
+		loggingInAsL = new JLabel("Logging in as");
+		loggingInAsL.setBounds(300, 100, 100, 20);
+		add(loggingInAsL);
 		//Add choice radio button
 		userTypeChoice = new Choice();
 		userTypeChoice.setBounds(400, 100, 150, 20);
@@ -142,9 +142,9 @@ public class Login extends JFrame implements ActionListener {
 		ImageIcon loginUserIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/loginUser.png"));
 		Image loginUserImage = loginUserIcon.getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH);
 		ImageIcon loginUserBigIcon = new ImageIcon(loginUserImage);
-		userIconlabel = new JLabel(loginUserBigIcon);
-        userIconlabel.setBounds(0, 0, 250, 250);
-        add(userIconlabel);
+		userIconL = new JLabel(loginUserBigIcon);
+        userIconL.setBounds(0, 0, 250, 250);
+        add(userIconL);
 	}
 	
 	@Override
@@ -153,8 +153,8 @@ public class Login extends JFrame implements ActionListener {
 		if (actionEvent.getSource() == loginButton) {
 			try {
 				Conn connection = new Conn();
-				String username = userNameField.getText();
-				String password = String.valueOf(passwordField.getPassword());
+				String username = userNameTF.getText();
+				String password = String.valueOf(passwordPF.getPassword());
 				String userType = userTypeChoice.getSelectedItem();
 				String query = "select * from login where username = '"+username+"' and password = '"+password+"' and user'"+userType+"'";
 				ResultSet rs = connection.statement.executeQuery(query);
@@ -162,11 +162,11 @@ public class Login extends JFrame implements ActionListener {
 					String meter = rs.getString("meter_no");
 					new MainPage(meter, userType).setVisible(true);
 					this.setVisible(false);
+					
 				} else {
-
 					JOptionPane.showMessageDialog(null, "Username/password can't be found. \nPlease try again or use the signup button to create an account");
-					userNameField.setText("");
-					passwordField.setText("");
+					userNameTF.setText("");
+					passwordPF.setText("");
 				}	
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -175,6 +175,7 @@ public class Login extends JFrame implements ActionListener {
 		
 		}else if (actionEvent.getSource() == cancelButton) {
 			this.setVisible(false);
+			
 		//Signup if account doen't exist
 		}else if (actionEvent.getSource() == signupButton) {
 			this.setVisible(false);
