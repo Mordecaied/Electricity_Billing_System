@@ -219,7 +219,7 @@ public class MeterInfo extends JFrame implements ActionListener {
 				Conn conn = new Conn();
 				conn.statement.executeUpdate(query);
 				JOptionPane.showMessageDialog(null, "Meter Info Added Succesfully");
-				this.setVisible(true);
+				this.setVisible(false);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

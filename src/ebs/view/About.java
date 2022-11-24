@@ -16,7 +16,7 @@ public class About extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	JButton exitButton;
-	JLabel aboutLabel;
+	JLabel aboutL;
 	TextArea aboutTA;
 	String aboutDesc;
 	Font F= new Font("RALEWAY", Font.BOLD, 180);
@@ -63,11 +63,11 @@ public class About extends JFrame implements ActionListener{
 		aboutTA.setFont(F1);
 		
 	    
-	    aboutLabel = new JLabel("About Project");
-	    add(aboutLabel);
-	    aboutLabel.setBounds(170, 10, 180, 80);
-	    aboutLabel.setForeground(Color.red);
-	    aboutLabel.setFont(F2);
+	    aboutL = new JLabel("About Project");
+	    add(aboutL);
+	    aboutL.setBounds(170, 10, 180, 80);
+	    aboutL.setForeground(Color.red);
+	    aboutL.setFont(F2);
 	}
 	
 	
