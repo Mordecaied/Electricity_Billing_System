@@ -1,0 +1,14 @@
+package ebs.view;
+
+import javax.swing.JFrame;
+
+public class DepositDetails extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
+	public static void main(String[] args) {
+		new DepositDetails().setVisible(true);
+
+	}
+
+}

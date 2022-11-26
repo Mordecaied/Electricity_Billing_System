@@ -1,0 +1,37 @@
+package ebs.login;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class MainPage extends JFrame implements ActionListener{
+
+	String meter;
+	
+	MainPage(String meter, String person) {
+		super("Electricity_Billing_System");
+		this.meter = meter;
+		
+	}
+	
+	
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		
+	}	
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

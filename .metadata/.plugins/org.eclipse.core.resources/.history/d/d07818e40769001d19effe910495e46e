@@ -1,0 +1,18 @@
+package ebs.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class DepositDetails extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JLabel sortByMeterNumber;
+	private JLabel sortByMonth;
+	
+
+	public static void main(String[] args) {
+		new DepositDetails().setVisible(true);
+
+	}
+
+}

@@ -46,15 +46,15 @@ public class CalculateBill extends JFrame implements ActionListener{
 	
 	private JButton submitButton;
 	private JButton cancelButton;
-	
-
-	
+		
 	public CalculateBill() {
 		getContentPane().setBackground(Color.WHITE);
 		setSize(750, 500);
 		setLocation(550, 220);
 		setLayout(new BorderLayout(30,30));
+		
 		getCalculateBillPanel();
+		
 		getCalculateBillImage();
 		
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,7 +138,6 @@ public class CalculateBill extends JFrame implements ActionListener{
 		month.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
 		month.setBackground(Color.WHITE);
 	
-		
 		calculateBillPanel.add(month);
 	}
 	
@@ -170,7 +169,6 @@ public class CalculateBill extends JFrame implements ActionListener{
 		
 		calculateBillPanel.add(chooseMeter);
 	}
-	
 	
 	public void chooseMonth() {
 		chooseMonth = new Choice();
@@ -245,7 +243,7 @@ public class CalculateBill extends JFrame implements ActionListener{
 				}
 			} catch (Exception e) {}
 			
-				String q = "insert into bill values('"+meter_no+"','"+units+"','"+totalBill+"', 'Not Paid')";
+				String q = "insert into bill values('"+meter_no+"','"+month+"','"+"','"+units+"','"+totalBill+"', 'Not Paid')";
 			try {
 				Conn conn2 = new Conn();
 				conn2.statement.executeQuery(q);

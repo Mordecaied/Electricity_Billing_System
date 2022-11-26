@@ -1,0 +1,137 @@
+package ebs.login;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.MenuBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class MainPage extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	String meter;
+	JMenuBar menuBar = new JMenuBar();
+	JMenu master;
+	JMenuItem newCustomer;
+	JMenuItem customerDetails;
+	JMenuItem depositDetails;
+	JMenuItem calculateBill;
+	public static final Font F_MONO = new Font("monospaced", Font.PLAIN, 12);
+	
+	MainPage(String meter, String person) {
+		super("Electricity Billing System");
+		this.meter = meter;
+		
+		setSize(1920, 1030);
+		
+		setUpMainPage();
+		
+	}
+	
+	void setUpMainPage() {
+		setUpBackground();
+		setUpMainMenuBar();
+		setUpInformationMenu();
+		setUpReportMenu();
+		setUpUtilityMenu();
+		setUpLogout();
+		setUpMenuByUserType();
+		
+	}
+	
+	
+	
+	private void setUpBackground() {
+		ImageIcon mainPageBackgroundIcon = new ImageIcon(ClassLoader.getSystemResource(""));
+		Image mainImageScaled = mainPageBackgroundIcon.getImage().getScaledInstance(1900, 950, Image.SCALE_SMOOTH);
+		ImageIcon mainImageIconFinal = new ImageIcon(mainImageScaled);
+		JLabel imageLabel = new JLabel(mainImageIconFinal);
+		add(imageLabel);	
+	}
+
+	private void setUpMainMenuBar() {
+		menuBar = new JMenuBar();
+		master = new JMenu("Master");
+		newCustomer = new JMenuItem("New Customer");
+		customerDetails = new JMenuItem("Customer Details");
+		depositDetails = new JMenuItem("Deposit Details");
+		calculateBill = new JMenuItem("Calculate Bill");
+		master.setForeground(Color.BLUE);
+		
+		setUpNewCustomerItem();
+		setUpCustomerDetailsItem();
+		setUpDepositDetailsItem();
+		setUpCalculateBillsItem();
+	}
+
+	private void setUpNewCustomerItem() {
+		master.setFont(F_MONO);	
+		newCustomer.setIcon(new ImageIcon(imageFactory("")));
+	}
+    
+	
+	private void setUpCustomerDetailsItem() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpDepositDetailsItem() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpCalculateBillsItem() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpInformationMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpReportMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpUtilityMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpLogout() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpMenuByUserType() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		
+	}	
+	
+	public Image imageFactory(String imageResource) {
+		ImageIcon imageIconRaw= new ImageIcon(ClassLoader.getSystemResource(imageResource));
+		Image scaledImage = imageIconRaw.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		return scaledImage;
+	}
+	
+	public static void main(String[] args) {
+		new MainPage("", "").setVisible(true);
+
+	}
+
+}

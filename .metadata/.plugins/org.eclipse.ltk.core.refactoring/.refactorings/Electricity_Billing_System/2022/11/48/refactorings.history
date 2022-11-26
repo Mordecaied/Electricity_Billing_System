@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;ebs.testSuite.Hghf.java&apos; to &apos;PrimeDirective.java&apos;&#x0D;&#x0A;- Original project: &apos;Electricity_Billing_System&apos;&#x0D;&#x0A;- Original element: &apos;ebs.testSuite.Hghf.java&apos;&#x0D;&#x0A;- Renamed element: &apos;ebs.testSuite.PrimeDirective.java&apos;" description="Rename compilation unit &apos;Hghf.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;ebs.testSuite{Hghf.java" name="PrimeDirective.java" references="false" stamp="1669063189394" version="1.0"/>
+</session>

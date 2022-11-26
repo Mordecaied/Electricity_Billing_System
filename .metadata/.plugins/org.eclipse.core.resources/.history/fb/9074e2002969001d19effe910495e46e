@@ -1,0 +1,21 @@
+package ebs.view;
+
+import javax.swing.JFrame;
+
+public class MeterInfo extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
+	public MeterInfo(String meter) {
+		
+		setLocation(600, 200);
+		setSize(700, 500);
+	
+	}
+
+	public static void main(String[] args) {
+		new MeterInfo("").setVisible(true);
+
+	}
+
+}

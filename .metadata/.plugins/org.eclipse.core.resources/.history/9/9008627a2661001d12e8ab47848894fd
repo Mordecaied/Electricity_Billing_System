@@ -1,0 +1,27 @@
+package ebs.login;
+
+public class MainPage {
+
+	String meter;
+	
+	MainPage(String mainPage, String person) {
+		super("Electricity_Billing_System");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}
