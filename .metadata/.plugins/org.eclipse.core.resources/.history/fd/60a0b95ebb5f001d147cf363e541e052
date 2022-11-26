@@ -1,0 +1,39 @@
+package login;
+
+import java.awt.Choice;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
+
+public class Login {
+
+	JLabel userNameLabel;
+	JLabel passwordLabel;
+	JLabel on;
+	JLabel loggingInAsLabel;
+	JTextArea inputUserNameField;
+	JPasswordField inputPasswordField;
+	Choice userTypeChoice;
+	
+	JButton loginButton;
+	JButton cancelButton;
+	JButton signupButton;
+	
+	ImageIcon loginIcon;
+	ImageIcon cancelIcon;
+	ImageIcon signupIcon;
+	
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

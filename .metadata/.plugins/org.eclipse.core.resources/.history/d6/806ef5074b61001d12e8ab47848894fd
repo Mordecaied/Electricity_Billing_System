@@ -1,0 +1,46 @@
+package ebs.login;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class MainPage extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	String meter;
+	
+	MainPage(String meter, String person) {
+		super("Electricity Billing System");
+		this.meter = meter;
+		
+		setSize(1920, 1030);
+		
+		setUpMainPage();
+		
+	}
+	
+	void setUpMainPage() {
+		setUpBackground();
+		setUpMainMenu();
+		setUpInformationMenu();
+		setUpReportMenu();
+		setUpUtilityMenu();
+		setUpLogout();
+		setUpMenuByUserType();
+		
+	}
+	
+	String msgString = "";
+	
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		
+	}	
+	
+	public static void main(String[] args) {
+		new MainPage("", "").setVisible(true);
+
+	}
+
+}

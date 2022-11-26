@@ -1,0 +1,16 @@
+package login;
+
+import javax.swing.JLabel;
+
+public class Login {
+
+	JLabel userNameLabel;
+	JLabel passwordLabel;
+	JLabel on;
+	JLabel loggingInAsLabel;
+	public static void main(String[] args) {
+		
+
+	}
+
+}

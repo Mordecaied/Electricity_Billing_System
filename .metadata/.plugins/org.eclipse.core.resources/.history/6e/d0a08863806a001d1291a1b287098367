@@ -1,0 +1,132 @@
+package ebs.view;
+
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class CalculateBill extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	
+	private JPanel calculateBillPanel;
+	
+	private JLabel calculateElectricityBillJLabel;
+	private JLabel meterNo;
+	private JLabel names;
+	private JLabel address;
+	private JLabel unitsConsumed;
+	private JLabel month;
+	private JLabel nameFromDB;
+	private JLabel addressFromDB;
+	
+	private Choice chooseMeter;
+	private Choice chooseMonth;
+	
+	private JButton submitButton;
+	private JButton cancelButton;
+	
+
+	
+	public CalculateBill() {
+		
+		getContentPane().setBackground(Color.WHITE);
+		setSize(750, 500);
+		setLocation(550, 220);
+		
+		getCalculateBillPanel();
+		
+	}
+	
+	private JPanel getCalculateBillPanel() {
+		calculateBillPanel = new JPanel();
+		calculateBillPanel.setLayout(null);
+		calculateBillPanel.setBackground(new Color(173, 216, 230));
+		
+		getCalculateElectricityBill();
+		getMeterNo();
+		getCusName();
+		getAddress();
+		getUnitsConsumed();
+		getMonths();
+		
+		
+		add(calculateBillPanel);
+		return calculateBillPanel;
+	}
+
+	private void getCalculateElectricityBill() {
+		calculateElectricityBillJLabel = new JLabel("Calculate Electricity Bill");
+		calculateElectricityBillJLabel.setBounds(30, 10, 400, 30);
+		
+		calculateBillPanel.add(calculateElectricityBillJLabel);
+	}
+
+	private void getMeterNo() {
+		meterNo = new JLabel("Meter no");
+		meterNo.setBounds(60, 70, 100, 30);
+		
+		calculateBillPanel.add(meterNo);
+	}
+
+	private void getCusName() {
+		names = new JLabel("Name");
+		names.setBounds(60, 120, 100, 30);
+		
+		calculateBillPanel.add(names);	
+	}
+
+	private void getAddress() {
+		address = new JLabel("Address");
+		address.setBounds(60, 170, 100, 30);
+		
+		calculateBillPanel.add(address);	
+	}
+
+	private void getUnitsConsumed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void getMonths() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public JButton getSubmitButton() {
+		submitButton = new JButton("Submit");
+		submitButton.setBounds(120, 390, 100, 25);
+		submitButton.setBackground(Color.BLACK);
+		submitButton.setForeground(Color.WHITE);
+		submitButton.addActionListener(this);
+		meterPanel.add(submitButton);
+		return submitButton;	
+	}
+	
+	public JButton getCancelButton() {
+		cancelButton = new JButton("Cancel");
+		cancelButton.setBounds(250, 390, 100, 25);
+		cancelButton.setBackground(Color.BLACK);
+		cancelButton.setForeground(Color.WHITE);
+		cancelButton.addActionListener(this);
+		meterPanel.add(cancelButton);
+		return cancelButton;	
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	public static void main(String[] args) {
+		new CalculateBill().setVisible(true);
+
+	}
+
+	
+}

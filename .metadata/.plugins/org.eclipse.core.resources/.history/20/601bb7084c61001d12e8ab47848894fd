@@ -1,0 +1,88 @@
+package ebs.login;
+
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class MainPage extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	String meter;
+	
+	MainPage(String meter, String person) {
+		super("Electricity Billing System");
+		this.meter = meter;
+		
+		setSize(1920, 1030);
+		
+		setUpMainPage();
+		
+	}
+	
+	void setUpMainPage() {
+		setUpBackground();
+		setUpMainMenu();
+		setUpInformationMenu();
+		setUpReportMenu();
+		setUpUtilityMenu();
+		setUpLogout();
+		setUpMenuByUserType();
+		
+	}
+	
+	
+	
+	private void setUpBackground() {
+		ImageIcon mainPageBackgroundIcon = new ImageIcon(ClassLoader.getSystemResource(""));
+		Image mainImageScaled = mainPageBackgroundIcon.getImage().getScaledInstance(1900, 950, Image.SCALE_SMOOTH);
+		ImageIcon mainImageIconFinal = new ImageIcon(mainImageScaled);
+		JLabel imageLabel = new JLabel(mainImageIconFinal);
+		add(imageLabel);
+		
+	}
+
+	private void setUpMainMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpInformationMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpReportMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpUtilityMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpLogout() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setUpMenuByUserType() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		
+	}	
+	
+	public static void main(String[] args) {
+		new MainPage("", "").setVisible(true);
+
+	}
+
+}

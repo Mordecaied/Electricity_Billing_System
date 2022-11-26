@@ -1,0 +1,170 @@
+package ebs.view;
+
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
+public class MeterInfo extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	
+	private JLabel meterNumberLabel;
+	private JLabel meterNumber;
+	private JLabel meterLocationLabel;
+	private JLabel meterTypeLabel;
+	private JLabel phaseCodeLabel;
+	private JLabel billTypeLabel;
+	private JLabel daysLabel;
+	private JLabel thirtyDaysLabel;
+//	private JLabel l1;
+//	private JLabel l1;
+//	private JLabel l1;
+//	
+	private Choice meterLocationChoice;
+	private Choice meterTypeChoice;
+	private Choice phaseCodeChoice;
+	private Choice billTypeChoice;
+//	private Choice c1;
+	
+	private JPanel meterPanel;
+    private String meter;
+
+	public MeterInfo(String meter) {
+		this.meter =  meter;
+		setLocation(600, 200);
+		setSize(700, 500);
+		
+		getMeterPanel();
+		
+	    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+	
+	public void getMeterPanel() {
+		meterPanel = new JPanel();
+		meterPanel.setLayout(null);
+		meterPanel.setBackground(new Color(173,216,230));
+		
+		JLabel title = new JLabel("Meter Information");
+		title.setBounds(180, 10, 200, 26);
+		title.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		meterPanel.add(title);
+		
+		getMeterNumber();
+		getMeterLocation();
+		getMeterType();
+		getPhaseCode();
+		getBillType();
+		getDays();
+		
+		add(meterPanel);	
+	}
+	
+	public void getMeterNumber() {
+		meterNumberLabel = new JLabel("Meter Number");
+		meterNumberLabel.setBounds(100, 80, 100, 20);
+		
+		meterNumber = new JLabel(meter);
+		meterNumber.setBounds(240, 80, 200, 20);
+		meterPanel.add(meterNumberLabel);
+		meterPanel.add(meterNumber);
+	}
+	
+	public void getMeterLocation() {
+		meterLocationLabel = new JLabel("Meter Location");
+		meterLocationLabel.setBounds(100, 120, 100, 20);
+		
+		meterLocationChoice = new Choice();
+		meterLocationChoice.add("Outside");
+		meterLocationChoice.add("Inside");
+		meterLocationChoice.setBounds(240, 120, 200, 20);
+		
+		meterPanel.add(meterLocationLabel);
+		meterPanel.add(meterLocationChoice);
+	}
+	
+	public void getMeterType() {
+		meterTypeLabel = new JLabel("Meter Type");
+		meterTypeLabel.setBounds(100, 160, 100, 20);
+		
+		meterTypeChoice = new Choice();
+		meterTypeChoice.add("Electric Meter");
+		meterTypeChoice.add("Solar Meter");
+		meterTypeChoice.add("Smart Meter");
+		meterTypeChoice.setBounds(240, 160, 200, 20);
+		
+		meterPanel.add(meterTypeLabel);
+		meterPanel.add(meterTypeChoice);
+	}
+	
+	public void getPhaseCode() {
+		phaseCodeLabel = new JLabel("Phase Code");
+		phaseCodeLabel.setBounds(100, 200, 100, 20);
+		
+		phaseCodeChoice = new Choice();
+		phaseCodeChoice.add("011");
+		phaseCodeChoice.add("022");
+		phaseCodeChoice.add("033");
+		phaseCodeChoice.add("044");
+		phaseCodeChoice.add("055");
+		phaseCodeChoice.add("066");
+		phaseCodeChoice.add("077");
+		phaseCodeChoice.add("088");
+		phaseCodeChoice.add("099");
+		phaseCodeChoice.setBounds(240, 200, 200, 20);
+		
+		meterPanel.add(phaseCodeLabel);
+		meterPanel.add(phaseCodeChoice);
+	}
+	
+	public void getBillType() {
+		billTypeLabel = new JLabel("Bill Type");
+		billTypeLabel.setBounds(100, 240, 100, 20);
+		
+		billTypeChoice = new Choice();
+		billTypeChoice.add("Normal");
+		billTypeChoice.add("Industrial");
+		billTypeChoice.setBounds(240, 240, 200, 20);
+		
+		meterPanel.add(billTypeLabel);
+		meterPanel.add(billTypeChoice);
+	}
+	
+	public void getDays() {
+		daysLabel = new JLabel("Days");
+		daysLabel.setBounds(100, 280, 100, 20);
+		
+		thirtyDaysLabel = new JLabel("30 Days");
+		thirtyDaysLabel.setBounds(240, 280, 200, 20);
+		
+		noteLabel = new JLabel("Note");
+		noteLabel.setBounds(100, 320, 100, 20);
+		
+		defaultBillLabel = new JLabel("By Default Bill is calculated for 30 days only");
+		defaultBillLabel.setBounds(240, 320, 300, 20);
+		
+		meterPanel.add(daysLabel);
+		meterPanel.add(thirtyDaysLabel);
+		meterPanel.add(noteLabel);
+		meterPanel.add(defaultBillLabel);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+
+	public static void main(String[] args) {
+		new MeterInfo("6968786").setVisible(true);
+
+	}
+
+	
+
+}

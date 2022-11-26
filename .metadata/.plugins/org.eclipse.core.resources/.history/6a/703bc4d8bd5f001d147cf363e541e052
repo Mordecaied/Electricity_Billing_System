@@ -1,0 +1,87 @@
+package login;
+
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class Login extends JFrame implements ActionListener {
+
+	JLabel userNameLabel;
+	JLabel passwordLabel;
+	JLabel loggingInAsLabel;
+	JLabel on;
+	
+	JTextField userNameField;
+	JPasswordField passwordField;
+	Choice userTypeChoice;
+	
+	JButton loginButton;
+	JButton cancelButton;
+	JButton signupButton;
+	
+	ImageIcon loginIcon;
+	ImageIcon cancelIcon;
+	ImageIcon signupIcon;
+	ImageIcon secondIcon;
+	
+	
+	Login(){
+		super("Login Page");
+		setLayout(null);
+		getContentPane().setBackground(Color.white);
+		
+		setUpLoggingButtons();
+	}
+	
+	
+	
+	void setUpLoggingButtons() {
+	
+		userNameLabel = new JLabel("Username");
+		passwordLabel = new JLabel("Password");
+		loggingInAsLabel = new JLabel("logging in as");
+		
+		userNameField = new JTextField(15);
+		passwordField = new JPasswordField(15);
+		userTypeChoice = new Choice();
+		
+		userNameLabel.setBounds(300, 20, 120, 20);
+		passwordLabel.setBounds(300, 60, 100, 20);
+		loggingInAsLabel.setBounds(300, 100, 100, 20);
+		
+		userNameField.setBounds(400, 20, 150, 20);
+		passwordField.setBounds(400, 60, 150, 20);
+		userTypeChoice.setBounds(400, 100, 150, 20);
+		
+		
+		
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+
+
+
+	
+
+}

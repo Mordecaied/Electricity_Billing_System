@@ -1,0 +1,44 @@
+package ebs.view;
+
+import java.awt.Choice;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class CalculateBill extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	
+	private JPanel calculateBillPanel;
+	
+	private JLabel calculateElectricityBillJLabel;
+	private JLabel meterNo;
+	private JLabel names;
+	private JLabel address;
+	private JLabel unitsConsumed;
+	private JLabel month;
+	private JLabel nameFromDB;
+	private JLabel addressFromDB;
+	
+	private Choice chooseMeter;
+	
+	
+	public CalculateBill() {
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	public static void main(String[] args) {
+		new CalculateBill().setVisible(true);
+
+	}
+
+	
+}

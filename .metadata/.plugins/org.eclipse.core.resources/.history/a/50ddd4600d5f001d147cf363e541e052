@@ -1,0 +1,66 @@
+package login;
+
+import java.awt.Font;
+import java.awt.Scrollbar;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class About extends JFrame implements ActionListener{
+	
+	JButton exitButton;
+	JLabel aboutLabel;
+	TextArea aboutTA;
+	String aboutDesc;
+	Font F= new Font("RALEWAY", Font.BOLD, 180);
+	Font F1= new Font("RALEWAY", Font.BOLD, 16);
+	Font F3= new Font("RALEWAY", Font.BOLD, 20);
+	
+	
+	
+	public About(){
+		setLayout(null);
+		buttonExit();
+		setFont(F);	
+	    createAboutArea();
+	}
+
+	public void buttonExit() {
+		exitButton = new JButton("Exit");
+		add(exitButton);
+		exitButton.setBounds(180, 430, 120, 20);
+		exitButton.addActionListener(this);
+	}
+	
+	public void createAboutArea() {
+		aboutDesc = "                       About Projects                 \n  "
+				+   "\nElectricity Billing System is a software based application "
+				+   "Developed in Java programming language. The programs aims to serve "
+				+   "the department of electricity by computerizing the billing system. "
+				+   "It mainly focuses on the calculation of units consumed during the "
+				+   "specified time and the money to be paid to electricity offices. "
+				+   "This computerized system will make the overall billing system easy, "
+				+   "accessible, comfortable and effective for consumers.\n\n";
+		
+		aboutTA = new TextArea(aboutDesc, 10, 40, Scrollbar.VERTICAL);
+	}
+	
+	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	
+}

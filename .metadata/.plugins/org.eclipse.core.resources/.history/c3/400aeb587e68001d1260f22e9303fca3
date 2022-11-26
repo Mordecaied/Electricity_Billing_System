@@ -1,0 +1,34 @@
+package ebs.view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+
+public class CustomerDetails extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	
+	JTable table;
+	JButton b1;
+	String x[] = {"Customr Name","Meter Number","Address","City","State","Email","Phone"};
+	
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+
+	public static void main(String[] args) {
+		
+
+	}
+
+
+
+	
+
+}
