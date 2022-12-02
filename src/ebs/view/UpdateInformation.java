@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -163,9 +164,15 @@ public class UpdateInformation extends JFrame implements ActionListener{
 	}
 	
 	public void getCustomerDetails() {
+		String query = null;
+		PreparedStatement pstmt = null;
+		
 		try {
 			Conn conn = new Conn();
-			ResultSet rs = conn.statement.executeQuery("select * from customer where meter = '"+ meter +"'");
+			query =  "SELECT * FROM customer WHERE meter = ?";
+			pstmt = conn.connection.prepareStatement(query);
+			pstmt.setString(1, meter);
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				customerNameL.setText(rs.getString(1));
 				meterNumberL.setText(rs.getString(2));
@@ -181,6 +188,9 @@ public class UpdateInformation extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
+		String query = null;
+		PreparedStatement pstmt = null;
+		
 		if (ae.getSource() == updateButton) {
 			String name = customerNameL.getText();
 			String meter = meterNumberL.getText();
@@ -192,7 +202,15 @@ public class UpdateInformation extends JFrame implements ActionListener{
 
 			try {
 				Conn conn = new Conn();
-				conn.statement.executeUpdate("update customer set address = '"+address+"', city = '"+city+"', state = '"+state+"', email = '"+email+"', phone = '"+phone+"'");
+				query =  "UPDATE customer SET address = ?, city = ?, state = ?, email = ?, phone = ?";
+				pstmt = conn.connection.prepareStatement(query);
+				pstmt.setString(1, address);
+				pstmt.setString(2, city);
+				pstmt.setString(3, state);
+				pstmt.setString(4, email);
+				pstmt.setString(5, phone);
+				pstmt.executeQuery();
+
 				JOptionPane.showMessageDialog(null, "Detail updated succesfully");
 				this.setVisible(true);
 			} catch (Exception e) {}

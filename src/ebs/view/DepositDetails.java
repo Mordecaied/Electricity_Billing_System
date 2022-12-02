@@ -4,6 +4,7 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.JButton;
@@ -79,13 +80,15 @@ public class DepositDetails extends JFrame implements ActionListener{
 		depositTable = new JTable(tableGrid, columnNames);
 		try {
 			Conn conn = new Conn();
-			String selectBillStatement = "select * from bill";
-			ResultSet rs = conn.statement.executeQuery(selectBillStatement);
+			String query = "SELECT * FROM bill";
+			PreparedStatement pstmt = conn.connection.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
 			
 			depositTable.setModel(DbUtils.resultSetToTableModel(rs));
 			
-			String selectCustomerStatement = "select * from customer";
-			rs = conn.statement.executeQuery(selectCustomerStatement);
+			String query2 = "SELECT * FROM customer";
+			pstmt = conn.connection.prepareStatement(query2);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				byMeterNumberChoice.add(rs.getString("meter"));
 				
@@ -115,14 +118,15 @@ public class DepositDetails extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
+		PreparedStatement pstmt = null;
 		if (ae.getSource() == searchButton) {
-			String seardchStatement = "select * from bill where meter = '"+
-		                               byMeterNumberChoice.getSelectedItem()+
-		                               "' AND month = '"+
-		                               byMonthChoice.getSelectedItem()+"'";
+			String seardchStatement = "SELECT * FROM bill where meter = ? AND month = ?";
 			try {
 				Conn conn = new Conn();
-				ResultSet rs = conn.statement.executeQuery(seardchStatement);
+				pstmt = conn.connection.prepareStatement(seardchStatement);
+				pstmt.setString(1, byMeterNumberChoice.getSelectedItem());
+				pstmt.setString(2, byMonthChoice.getSelectedItem());
+				ResultSet rs = pstmt.executeQuery();
 				depositTable.setModel(DbUtils.resultSetToTableModel(rs));
 			} catch (Exception e) {}
 		}else if (ae.getSource() == printButton) {

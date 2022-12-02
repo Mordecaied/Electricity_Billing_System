@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -209,15 +211,18 @@ public class MeterInfo extends JFrame implements ActionListener {
 			String bill_type = meterTypeChoice.getSelectedItem();
 			String dayString = "30";
 			
-			String query = "insert into meter_info values('"+meter_number+"','"
-			                                                +meter_location+"','"
-					                                        +meter_type+"','"
-			                                                +phase_code+"','"
-			                                                +bill_type+"','"
-					                                        +dayString+"')";
+			String query = "INSERT INTO meter_info VALUES(?,?,?,?,?,?)";
 			try {
 				Conn conn = new Conn();
-				conn.statement.executeUpdate(query);
+				PreparedStatement pstmt = conn.connection.prepareStatement(query);
+				pstmt.setString(1, meter_number);
+				pstmt.setString(2, meter_location);
+				pstmt.setString(3, meter_type);
+				pstmt.setString(4, phase_code);
+				pstmt.setString(5, bill_type);
+				pstmt.setString(6, dayString);
+				pstmt.executeUpdate();
+				
 				JOptionPane.showMessageDialog(null, "Meter Info Added Succesfully");
 				this.setVisible(false);
 			} catch (Exception e) {

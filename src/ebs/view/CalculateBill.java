@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.BorderFactory;
@@ -24,7 +25,8 @@ import javax.swing.SwingConstants;
 import ebs.database.Conn;
 
 public class CalculateBill extends JFrame implements ActionListener{
-
+    //TODO Fix rendering order
+	//TODO Check not paid value
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel calculateBillPanel;
@@ -70,7 +72,7 @@ public class CalculateBill extends JFrame implements ActionListener{
 		getCusName();
 		getAddress();
 		getUnitsConsumed();
-		getChooseMonths();
+		getChooseMonth();
 		getChooseMeter();
 		getSubmitButton();
 		getCancelButton();
@@ -124,30 +126,22 @@ public class CalculateBill extends JFrame implements ActionListener{
 		unitsConsumed.setOpaque(true);
 		unitsConsumed.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
 		unitsConsumed.setBackground(Color.WHITE);
+        calculateBillPanel.add(unitsConsumed);
         
 		unitsTF = new JTextField();
 		unitsTF.setBounds(200, 220, 180, 20);
-		
-		calculateBillPanel.add(unitsConsumed);
+		calculateBillPanel.add(unitsTF);	
 	}
 
-	private void getChooseMonths() {
-		month = new JLabel("Month", SwingConstants.CENTER);
-		month.setBounds(60, 270, 100, 30);
-		month.setOpaque(true);
-		month.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
-		month.setBackground(Color.WHITE);
-	
-		calculateBillPanel.add(month);
-	}
-	
 	private void getChooseMeter() {
 		chooseMeter = new Choice();
 		chooseMeter.setBounds(200, 70, 180, 20);
-
+		
 		try {
 			Conn conn = new Conn();
-			ResultSet rs = conn.statement.executeQuery("select * from customer");
+			String query =  "SELECT * FROM customer";
+			PreparedStatement pstmt = conn.connection.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				chooseMeter.add(rs.getString("meter"));
 			}
@@ -158,7 +152,10 @@ public class CalculateBill extends JFrame implements ActionListener{
 			public void itemStateChanged(ItemEvent e) {
 				try {
 					Conn conn = new Conn();
-					ResultSet rs = conn.statement.executeQuery("select * from customer where meter = '"+chooseMeter.getSelectedItem()+"'");
+					String query = "SELECT * FROM customer WHERE meter = ?";
+					PreparedStatement pstmt = conn.connection.prepareStatement(query);
+					pstmt.setString(1, chooseMeter.getSelectedItem());
+					ResultSet rs = pstmt.executeQuery();
 					while (rs.next()) {
 						nameFromDB.setText(rs.getString("name"));
 						addressFromDB.setText(rs.getString("address"));
@@ -170,7 +167,14 @@ public class CalculateBill extends JFrame implements ActionListener{
 		calculateBillPanel.add(chooseMeter);
 	}
 	
-	public void chooseMonth() {
+	public void getChooseMonth() {
+		month = new JLabel("Month", SwingConstants.CENTER);
+		month.setBounds(60, 270, 100, 30);
+		month.setOpaque(true);
+		month.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
+		month.setBackground(Color.WHITE);
+		calculateBillPanel.add(month);
+		
 		chooseMonth = new Choice();
 		chooseMonth.setBounds(200, 270, 180, 20);
 		
@@ -187,6 +191,7 @@ public class CalculateBill extends JFrame implements ActionListener{
 		chooseMonth.add("November");
 		chooseMonth.add("December");
 		
+		calculateBillPanel.add(chooseMonth);	
 	}
 	
 	public JButton getSubmitButton() {
@@ -222,6 +227,8 @@ public class CalculateBill extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
+		PreparedStatement pstmt;
+		
 		if (ae.getSource() == submitButton) {
 			String meter_no = chooseMeter.getSelectedItem();
 			String units = unitsTF.getText();
@@ -232,7 +239,9 @@ public class CalculateBill extends JFrame implements ActionListener{
 			int totalBill = 0;
 			try {
 				Conn conn = new Conn();
-				ResultSet rs = conn.statement.executeQuery("select * from tax");
+				String query = "SELECT * FROM tax";
+				pstmt = conn.connection.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery();
 				while (rs.next()) {
 					totalBill = unitsConsumed * Integer.parseInt(rs.getString("cost_per_unit"));//120 * 9
 					totalBill += Integer.parseInt(rs.getString("meter_rent"));
@@ -242,11 +251,19 @@ public class CalculateBill extends JFrame implements ActionListener{
 					totalBill += Integer.parseInt(rs.getString("fixed_tax"));
 				}
 			} catch (Exception e) {}
-			
-				String q = "insert into bill values('"+meter_no+"','"+month+"','"+"','"+units+"','"+totalBill+"', 'Not Paid')";
+
+				
 			try {
 				Conn conn2 = new Conn();
-				conn2.statement.executeQuery(q);
+				String query = "INSERT INTO bill VALUES(?,?,?,?,?)";
+				pstmt = conn2.connection.prepareStatement(query);
+				pstmt.setString(1, meter_no);
+				pstmt.setString(2, month);
+				pstmt.setString(3, units);
+				pstmt.setInt(4, totalBill);
+				pstmt.setString(5, "Not Paid");//CHECK IN FINAL RUN
+				pstmt.executeUpdate();
+			
 				JOptionPane.showMessageDialog(null,  "Customer Bill Udated Succesfully");
 				this.setVisible(false);
 			} catch (Exception e2) {

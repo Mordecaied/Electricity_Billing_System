@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.PreparedStatement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -200,15 +201,29 @@ public class SignUp extends JFrame implements ActionListener {
 			String meter = meterNumberField.getText();
 
 			try {
-				Conn connection = new Conn();
+				Conn conn = new Conn();
 				String query = null;
+				PreparedStatement pstmt;
 				if(userType == "Admin") {
-					query = "insert into login values('"+meter+"', '"+username+"', '"+name+"', '"+password+"', '"+userType+"')";
+					query = "INSERT INTO login VALUES(?,?,?,?,?)";
+					pstmt = conn.connection.prepareStatement(query);
+				    pstmt.setString(1, meter);
+				    pstmt.setString(2, username);
+				    pstmt.setString(3, name);
+				    pstmt.setString(4, password);
+				    pstmt.setString(5, userType);
+				    
 				}else {
-					query = "update login set username = '"+username+"', name = '"+name+"', password = '"+password+"', userType = '"+userType+"' "
-							+ "where meter_no = '"+meterNumberField.getText()+"'";	
+					query = "UPDATE login SET username = ?, name = ?, password =?, userType = ? "
+							+"WHERE meter_no = ?";	
+					pstmt = conn.connection.prepareStatement(query);
+				    pstmt.setString(1, username);
+				    pstmt.setString(2, name);
+				    pstmt.setString(3, password);
+				    pstmt.setString(4, userType);
+				    pstmt.setString(5, meterNumberField.getText());
 				}
-				connection.statement.executeUpdate(query);
+				pstmt.executeUpdate();
 				JOptionPane.showMessageDialog(null, "Account Created Successfully");
 				this.setVisible(false);
 				new Login().setVisible(true);	

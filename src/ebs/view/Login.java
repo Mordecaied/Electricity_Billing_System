@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
@@ -152,12 +153,17 @@ public class Login extends JFrame implements ActionListener {
 		//Connect to DB and search for matching username and password
 		if (actionEvent.getSource() == loginButton) {
 			try {
-				Conn connection = new Conn();
 				String username = userNameTF.getText();
 				String password = String.valueOf(passwordPF.getPassword());
 				String userType = userTypeChoice.getSelectedItem();
-				String query = "select * from login where username = '"+username+"' and password = '"+password+"' and user'"+userType+"'";
-				ResultSet rs = connection.statement.executeQuery(query);
+				
+				Conn conn = new Conn();
+				String query = "SELECT * from login WHERE username = ? AND password = ? AND user = ?";
+				PreparedStatement pstmt = conn.connection.prepareStatement(query);
+				pstmt.setString(1, username);
+				pstmt.setString(2, password);
+				pstmt.setString(3, userType);
+				ResultSet rs = pstmt.executeQuery();
 				if (rs.next()) {
 					String meter = rs.getString("meter_no");
 					new MainPage(meter, userType).setVisible(true);
