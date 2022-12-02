@@ -2,6 +2,7 @@ package ebs.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.JButton;
@@ -33,8 +34,9 @@ public class CustomerDetails extends JFrame implements ActionListener {
 	public JTable initializeTable() {
 		try {
 			Conn conn = new Conn();
-			String selectStatement = "Select * from customer";
-			ResultSet rs = conn.statement.executeQuery(selectStatement);
+			String query = "SELECT * FROM customer";
+			PreparedStatement pstmt = conn.connection.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
 			 while (rs.next()) {
 				y[i][j++] = rs.getString("name");
 				y[i][j++] = rs.getString("meter");

@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -191,12 +192,27 @@ public class NewCustomer extends JFrame implements ActionListener {
 			String email = emailTF.getText();
 			String phone = phoneNumberTF.getText();
 			
-			String customerQuery = "insert into customer values('"+name+"','"+meter+"','"+address+"','"+city+"','"+state+"','"+email+"','"+phone+"')";
-			String loginQuery = "insert into login values('"+meter+"', '', '', '', '')";
+			String customerQuery = "INSERT INTO customer VALUES(?,?,?,?,?,?,?)";
+			String loginQuery = "INSERT INTO login VALUES(?,?,?,?,?)";
 			try {
-				Conn con = new Conn();
-				con.statement.executeUpdate(customerQuery);
-				con.statement.executeUpdate(loginQuery);
+				Conn conn = new Conn();
+				PreparedStatement pstmt = conn.connection.prepareStatement(customerQuery);
+				pstmt.setString(1, name);
+				pstmt.setString(2, meter);
+				pstmt.setString(3, address);
+				pstmt.setString(4, city);
+				pstmt.setString(5, state);
+				pstmt.setString(6, email);
+				pstmt.setString(7, phone);
+				pstmt.executeUpdate();
+				
+				PreparedStatement pstmt2 = conn.connection.prepareStatement(loginQuery);
+				pstmt2.setString(1, meter);
+				pstmt2.setString(2, "");
+				pstmt2.setString(3, "");
+				pstmt2.setString(4, "");
+				pstmt2.setString(5, "");
+				pstmt2.executeUpdate();
 				JOptionPane.showMessageDialog(null, "Custmer Details added succesfully");
 				new MeterInfo(meter).setVisible(true);
 				

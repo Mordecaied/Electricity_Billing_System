@@ -4,31 +4,30 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.Properties;
 
 public class Conn {
-	public Connection connection;
-	public Statement statement;
+	public Connection connection = null;
+	//public PreparedStatement preparedStatement = null;
+	//public String sql = "";
 	
-	String driverClass = "";
-	String url = "";
-	String username = "";
-	String password = "";
+	private String driverClass = null;
+	private String url = null;
+	private String username = null;
+	private String password = null;
 	
 	public Conn() {
 		try {
 			
 			Properties prop = loadPropertiesFile();
-
 			driverClass = prop.getProperty("MYSQLJDBC.driver");
 			url = prop.getProperty("MYSQLJDBC.url");
 			username = prop.getProperty("MYSQLJDBC.username");
 			password = prop.getProperty("MYSQLJDBC.password");
-			
 			Class.forName(driverClass);
+			
 			connection = DriverManager.getConnection(url, username, password);
-			statement = connection.createStatement();
+			
 			
 			if (connection != null) {
 				System.out.println("connection created successfully using properties file");
