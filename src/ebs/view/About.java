@@ -37,6 +37,7 @@ public class About extends JFrame implements ActionListener{
 	    setLayout(null);
 	    setVisible(true);
 	    
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void buttonExit() {

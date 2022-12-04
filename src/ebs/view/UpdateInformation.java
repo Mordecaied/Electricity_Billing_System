@@ -213,6 +213,7 @@ public class UpdateInformation extends JFrame implements ActionListener{
 
 				JOptionPane.showMessageDialog(null, "Detail updated succesfully");
 				this.setVisible(true);
+				
 			} catch (Exception e) {}
 		}else if (ae.getSource() == backButton) {
 			this.setVisible(false);

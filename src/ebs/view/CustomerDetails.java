@@ -29,6 +29,8 @@ public class CustomerDetails extends JFrame implements ActionListener {
 	    
 	    initializeTable();
 	    getPrintButton();
+	    
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public JTable initializeTable() {

@@ -42,6 +42,7 @@ public class DepositDetails extends JFrame implements ActionListener{
 		getSearchBUtton();
 		getPrintBUtton();
 		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void getSortByMeter() {
