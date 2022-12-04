@@ -49,7 +49,8 @@ public class SignUp extends JFrame implements ActionListener {
 	SignUp(){
 		setBounds(600, 250, 700, 400);
 		setUpSignupPage();
-
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	void setUpSignupPage() {

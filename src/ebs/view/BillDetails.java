@@ -7,7 +7,8 @@ public class BillDetails extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public BillDetails(String meter) {
-		// TODO Auto-generated constructor stub
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {

@@ -59,6 +59,8 @@ public class MainPage extends JFrame implements ActionListener{
 		setFont(new Font("Senserif", Font.BOLD, 16));
 		setLayout(new FlowLayout());
 		setVisible(false);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	private void setUpMainPaiBackground() {
