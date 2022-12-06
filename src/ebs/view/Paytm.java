@@ -2,7 +2,6 @@ package ebs.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +12,7 @@ import javax.swing.JScrollPane;
 
 public class Paytm extends JFrame implements ActionListener {
 
+	private static final long serialVersionUID = 1L;
 	private String meter;
 	private JButton backButton;
 	JEditorPane editor;

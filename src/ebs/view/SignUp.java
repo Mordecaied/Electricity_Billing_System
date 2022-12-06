@@ -171,7 +171,6 @@ public class SignUp extends JFrame implements ActionListener {
 		createButton.setBounds(140, 240, 120, 30);
 		createButton.addActionListener(this);
 		accountPanel.add(createButton);	
-
 	}
 	//Back Button
 	void buttonBack() {
@@ -215,7 +214,7 @@ public class SignUp extends JFrame implements ActionListener {
 				    pstmt.setString(5, userType);
 				    
 				}else {
-					query = "UPDATE login SET username = ?, name = ?, password =?, userType = ? "
+					query = "UPDATE login SET username = ?, name = ?, password =?, user = ? "
 							+"WHERE meter_no = ?";	
 					pstmt = conn.connection.prepareStatement(query);
 				    pstmt.setString(1, username);

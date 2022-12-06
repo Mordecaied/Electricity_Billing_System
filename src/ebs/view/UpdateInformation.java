@@ -51,7 +51,7 @@ public class UpdateInformation extends JFrame implements ActionListener{
 
 		setUpUpdateInformation();
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 
 	private void setUpUpdateInformation() {
@@ -192,8 +192,8 @@ public class UpdateInformation extends JFrame implements ActionListener{
 		PreparedStatement pstmt = null;
 		
 		if (ae.getSource() == updateButton) {
-			String name = customerNameL.getText();
-			String meter = meterNumberL.getText();
+//			String name = customerNameL.getText();
+//			String meter = meterNumberL.getText();
 			String address = addresssTF.getText();
 			String city = cityTF.getText();
 			String state = stateTF.getText();
@@ -209,9 +209,9 @@ public class UpdateInformation extends JFrame implements ActionListener{
 				pstmt.setString(3, state);
 				pstmt.setString(4, email);
 				pstmt.setString(5, phone);
-				pstmt.executeQuery();
+				pstmt.executeUpdate();
 
-				JOptionPane.showMessageDialog(null, "Detail updated succesfully");
+				JOptionPane.showMessageDialog(null, "Details updated succesfully");
 				this.setVisible(true);
 				
 			} catch (Exception e) {}

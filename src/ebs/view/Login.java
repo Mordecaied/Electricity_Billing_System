@@ -53,7 +53,7 @@ public class Login extends JFrame implements ActionListener {
 		setLocation(600, 300);
 		setVisible(true);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	void setUpLoggingPage() {

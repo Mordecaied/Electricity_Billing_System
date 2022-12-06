@@ -75,7 +75,7 @@ public class PayBill extends JFrame implements ActionListener {
 		meterNo.setBounds(35, 80, 200, 20);
 		add(meterNo);
 		
-		meterNoLF = new JLabel();
+		meterNoLF = new JLabel(meter);
 		meterNoLF.setBounds(300, 80, 200, 20);
 		add(meterNoLF);
 	}
@@ -156,8 +156,10 @@ public class PayBill extends JFrame implements ActionListener {
 				meterNoLF.setText(rs.getString("meter"));
 				namesLF.setText(rs.getString("name"));
 			}
-			String query2 = "SELECET * FROM bill where meter = ? AND month = January";
+			String query2 = "SELECET * FROM bill where meter = ? AND month = ?";
 			rs = pstmt.executeQuery(query2);
+			pstmt.setString(1, meter);
+			pstmt.setString(2, chooseMonth.getSelectedItem());
 			while (rs.next()) {
 				unitsLF.setText(rs.getString("units"));
 				totalBillLF.setText(rs.getString("total_bill"));
@@ -171,7 +173,7 @@ public class PayBill extends JFrame implements ActionListener {
 			public void itemStateChanged(ItemEvent ie) {
 				try {
 					Conn conn = new Conn();
-					String query = "SELECT * FRO bill WHERE meter = ? and month = ?";
+					String query = "SELECT * FROM bill WHERE meter = ? and month = ?";
 					PreparedStatement pstmt = conn.connection.prepareStatement(query);
 					pstmt.setString(1, meter);
 					pstmt.setString(2, chooseMonth.getSelectedItem());

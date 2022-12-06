@@ -40,6 +40,7 @@ public class ViewInformation extends JFrame implements ActionListener {
 	private String meter;
 
 	public ViewInformation(String meter) {
+		this.meter = meter;
 		setBounds(600, 250, 850, 650);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
@@ -126,7 +127,7 @@ public class ViewInformation extends JFrame implements ActionListener {
 		emailL.setBounds(500, 140, 100, 20);
 		add(emailL);
 		emailTL  = new JLabel();
-		emailTL.setBounds(650, 140, 100, 20);
+		emailTL.setBounds(650, 140, 200, 20);
 		add(emailTL);
 	}
 

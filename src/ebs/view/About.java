@@ -22,7 +22,7 @@ public class About extends JFrame implements ActionListener{
 	Font F= new Font("RALEWAY", Font.BOLD, 180);
 	Font F1= new Font("RALEWAY", Font.BOLD, 16);
 	Font F2= new Font("RALEWAY", Font.BOLD, 20);
-	
+	Container contentPane; 
 	
 	
 	public About(){
@@ -31,7 +31,7 @@ public class About extends JFrame implements ActionListener{
 		buttonExit();
 		setFont(F);	
 	    createAboutArea();
-	    Container contentPane = this.getContentPane();
+	    contentPane= this.getContentPane();
 	    aboutTA = new TextArea();
 	    setBounds(700, 220, 500, 550);
 	    setLayout(null);
