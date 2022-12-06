@@ -38,9 +38,10 @@ public class MainPage extends JFrame implements ActionListener{
 	
 	JMenu reportMenu;
 	JMenuItem generateBill;
+	JMenuItem webBrowser;
 	
 	JMenu utilityMenu;
-	JMenuItem calender;
+	JMenuItem notepad;
 	JMenuItem calculator;
 	
 	JMenu logoutMenu;
@@ -60,7 +61,7 @@ public class MainPage extends JFrame implements ActionListener{
 		setLayout(new FlowLayout());
 		setVisible(false);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	private void setUpMainPaiBackground() {
@@ -102,6 +103,7 @@ public class MainPage extends JFrame implements ActionListener{
 		newCustomer.setBackground(Color.WHITE);	
 		setImage(newCustomer, "Icons/signupUser.png");
      	setUpKeys(newCustomer, 'N', KeyEvent.VK_N);
+     	newCustomer.addActionListener(this);
 		return newCustomer;	
 	}
 
@@ -111,6 +113,7 @@ public class MainPage extends JFrame implements ActionListener{
 		customerDetails.setBackground(Color.WHITE);	
 		setImage(customerDetails, "Icons/signupUser.png");
      	setUpKeys(customerDetails, 'C', KeyEvent.VK_C);	
+     	customerDetails.addActionListener(this);
      	return customerDetails;
 	}
 
@@ -120,6 +123,7 @@ public class MainPage extends JFrame implements ActionListener{
 		depositDetails.setBackground(Color.WHITE);	
 		setImage(depositDetails, "Icons/signupUser.png");
      	setUpKeys(depositDetails, 'D', KeyEvent.VK_D);
+     	depositDetails.addActionListener(this);
 		return depositDetails;
 	}
 
@@ -129,6 +133,7 @@ public class MainPage extends JFrame implements ActionListener{
 		calculateBill.setBackground(Color.WHITE);	
 		setImage(calculateBill, "Icons/signupUser.png");
      	setUpKeys(calculateBill, 'B', KeyEvent.VK_B);
+     	calculateBill.addActionListener(this);
 		return calculateBill;
 	}
 	
@@ -147,6 +152,7 @@ public class MainPage extends JFrame implements ActionListener{
 		updateInfo.setBackground(Color.WHITE);	
 		setImage(updateInfo, "Icons/signupUser.png");
      	setUpKeys(updateInfo, 'U', KeyEvent.VK_U);
+     	updateInfo.addActionListener(this);
 		return updateInfo;	
 	}
 
@@ -156,6 +162,7 @@ public class MainPage extends JFrame implements ActionListener{
 		viewInfo.setBackground(Color.WHITE);	
 		setImage(viewInfo, "Icons/signupUser.png");
      	setUpKeys(viewInfo, 'V', KeyEvent.VK_V);
+     	viewInfo.addActionListener(this);
 		return viewInfo;	
 	}
 	
@@ -174,6 +181,7 @@ public class MainPage extends JFrame implements ActionListener{
 		payBills.setBackground(Color.WHITE);	
 		setImage(payBills, "Icons/signupUser.png");
 	 	setUpKeys(payBills, 'P', KeyEvent.VK_P);
+	 	payBills.addActionListener(this);
 		return payBills;
 		}
 
@@ -183,6 +191,7 @@ public class MainPage extends JFrame implements ActionListener{
 		billDetails.setBackground(Color.WHITE);	
 		setImage(billDetails, "Icons/signupUser.png");
 	 	setUpKeys(billDetails, 'L', KeyEvent.VK_L);
+	 	billDetails.addActionListener(this);
 		return billDetails;
 		}
 
@@ -199,6 +208,7 @@ public class MainPage extends JFrame implements ActionListener{
 		generateBill.setBackground(Color.WHITE);	
 		setImage(generateBill, "Icons/signupUser.png");
 	 	setUpKeys(generateBill, 'G', KeyEvent.VK_G);
+	 	generateBill.addActionListener(this);
 		return generateBill;
 		}
 
@@ -206,19 +216,20 @@ public class MainPage extends JFrame implements ActionListener{
 	private JMenu utilityMenu() {
 		utilityMenu = new JMenu("Utility");
 		utilityMenu.setForeground(Color.RED);
-		utilityMenu.add(calenderMenuItem());
+		utilityMenu.add(notepadMenuItem());
 		utilityMenu.add(calculatorMenuItem());
 		utilityMenu.add(webBrowserMenuItem());
 		return utilityMenu;
 	}
 	
-	private JMenuItem calenderMenuItem() {
-		calender = new JMenuItem("Calender");
-		calender.setFont(F_MONO);
-		calender.setBackground(Color.WHITE);	
-		setImage(calender, "Icons/signupUser.png");
-	 	setUpKeys(calender, 'A', KeyEvent.VK_A);
-		return calender;
+	private JMenuItem notepadMenuItem() {
+		notepad = new JMenuItem("Notepad");
+		notepad.setFont(F_MONO);
+		notepad.setBackground(Color.WHITE);	
+		setImage(notepad, "Icons/signupUser.png");
+	 	setUpKeys(notepad, 'A', KeyEvent.VK_A);
+	 	notepad.addActionListener(this);
+		return notepad;
 		}
 
 	private JMenuItem calculatorMenuItem() {
@@ -227,16 +238,18 @@ public class MainPage extends JFrame implements ActionListener{
 		calculator.setBackground(Color.WHITE);	
 		setImage(calculator, "Icons/signupUser.png");
 	 	setUpKeys(calculator, 'R', KeyEvent.VK_R);
+	 	calculator.addActionListener(this);
 		return calculator;
 		}
 	
 	private JMenuItem webBrowserMenuItem() {
-		generateBill = new JMenuItem("Web Browser");
-		generateBill.setFont(F_MONO);
-		generateBill.setBackground(Color.WHITE);	
-		setImage(generateBill, "Icons/signupUser.png");
-	 	setUpKeys(generateBill, 'W', KeyEvent.VK_W);
-		return generateBill;
+		webBrowser = new JMenuItem("Web Browser");
+		webBrowser.setFont(F_MONO);
+		webBrowser.setBackground(Color.WHITE);	
+		setImage(webBrowser, "Icons/signupUser.png");
+	 	setUpKeys(webBrowser, 'W', KeyEvent.VK_W);
+	 	webBrowser.addActionListener(this);
+		return webBrowser;
 		}
 
 	/*--------------Logout MENU-----------------------*/
@@ -253,6 +266,7 @@ public class MainPage extends JFrame implements ActionListener{
 		logoutMenuItem.setBackground(Color.WHITE);	
 		setImage(logoutMenuItem, "Icons/signupUser.png");
 	 	setUpKeys(logoutMenuItem, 'W', KeyEvent.VK_W);
+	 	logoutMenuItem.addActionListener(this);
 		return logoutMenuItem;
 	}
 	
@@ -283,10 +297,10 @@ public class MainPage extends JFrame implements ActionListener{
 		case "Calculate Bill":
 			new CalculateBill().setVisible(true);;
 			break;
-		case "Pay Bill":
+		case "Pay Bills":
 			new PayBill(meter).setVisible(true);;
 			break;
-		case "Calander":
+		case "Notepad":
 			try {
 				Runtime.getRuntime().exec("notepad.exe");
 			} catch (Exception e) {}
@@ -296,16 +310,16 @@ public class MainPage extends JFrame implements ActionListener{
 				Runtime.getRuntime().exec("calc.exe");
 			} catch (Exception e) {}
 			break;
-		case "Web Broswer":
+		case "Web Browser":
 			try {
-				Runtime.getRuntime().exec("C:\\Program Files (x86)\\Microsoft\\Edge\\Applicationmsedge.exe");
+				Runtime.getRuntime().exec("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
 			} catch (Exception e) {}
 			break;
 		case "Logout":
 			this.setVisible(false);
 			break;
 		case "Generate Bill":
-			new GenerateBill().setVisible(true);
+			new GenerateBill(meter).setVisible(true);
 			break;
 		case "Deposit Details":
 			new DepositDetails().setVisible(true);;

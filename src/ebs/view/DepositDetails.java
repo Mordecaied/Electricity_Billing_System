@@ -42,7 +42,7 @@ public class DepositDetails extends JFrame implements ActionListener{
 		getSearchBUtton();
 		getPrintBUtton();
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void getSortByMeter() {
@@ -111,7 +111,7 @@ public class DepositDetails extends JFrame implements ActionListener{
 	}
 
 	public void getPrintBUtton() {
-		printButton = new JButton("Search");
+		printButton = new JButton("Print");
 		printButton.setBounds(120, 70, 80, 20);
 		printButton.addActionListener(this);
 		add(printButton);
